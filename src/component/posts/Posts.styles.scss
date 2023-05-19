@@ -1,0 +1,22 @@
+.posts {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    .post {
+      margin: 5px;
+      padding: 5px;
+      box-shadow: 0px 0px 2px lightgray;
+    }
+
+    .heading {
+      font-weight: bold;
+    }
+  }
+}
