@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import todoSlice from "../component/todo/todoSlice"
+import todoSlice from "../pages/todo/todoSlice"
 import { postApi } from "../services/posts"
 import { setupListeners } from "@reduxjs/toolkit/dist/query"
 

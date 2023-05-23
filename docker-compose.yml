@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: client
+      target: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/usr/src/client
+      - /usr/src/client/node_modules
+    restart: always
+    networks:
+      - react-express
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: api
+      target: development
+    ports:
+      - 3001:3001
+    expose:
+      - 3001
+    volumes:
+      - ./api:/usr/src/api
+      - /usr/src/api/node_modules
+    depends_on:
+      - mongo
+    networks:
+      - express-mongo
+      - react-express
+
+  mongo:
+    restart: always
+    image: mongo:4.2.0
+    volumes:
+      - ./data:/data/db
+    networks:
+      - express-mongo
+    expose:
+      - 27017
+
+networks:
+  react-express:
+  express-mongo:
